@@ -8,9 +8,9 @@ function SignUp () {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
-
+ 
     const handleSubmit = (e) => {
         e.preventDefault();
         // axios.post('http://localhost:3001/register', {name, email, password})
@@ -20,13 +20,17 @@ function SignUp () {
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log(userCredential);
+            navigate('/sign')
         })
         .catch((error) => {
             console.log(error);
         })
+       
     }
-
-
+    const handleClickSubmit = (e) => {
+        e.preventDefault();
+        navigate('/sign');
+    };
 
     return (
         <div className="container registration">
@@ -51,7 +55,7 @@ function SignUp () {
 
             <p>Already have an account?</p>
             
-            <button>Login</button>
+            <button onClick={handleClickSubmit}>Login</button>
 
         </div>
     );
