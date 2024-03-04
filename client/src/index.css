@@ -18,30 +18,17 @@ input {
   padding: .8rem;
   border-radius: 4px;
 }
-label{
-  padding: 4px;
-}
-.name{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.email{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.pass{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-bottom: 8px;
-}
+
 
 button {
-  background: hsl(172, 67%, 45%);
+  background: hsl(0, 0%, 100%);
+  color: hsl(183, 100%, 15%);
   font: inherit;
-  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  border: #f8f8f8;
+  border-radius: 50%;
   cursor: pointer;
   font-weight: 500;
   transition: transform 0.3s ease-in-out;
@@ -51,14 +38,14 @@ button:hover {
 }
 
 .container {
-  width: 80%;
+  width: 90%;
   margin: auto;
   place-items: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  
+  flex-wrap: wrap;
+  padding-top: 20px;
 }
 .movie {
   margin: 1rem;
@@ -76,7 +63,7 @@ button:hover {
 }
 .poster {
   width: 100%;
-  height: 280px;
+  height: 250px;
 }
 .movie-details {
   display: flex;
@@ -86,7 +73,7 @@ button:hover {
 }
 .box {
   width: 100%;
-  padding: .5rem;
+  padding: ;
   align-items: center;
   justify-content: space-around;
 }
@@ -103,16 +90,57 @@ button:hover {
 .rating {
   display: flex;
   justify-content: space-between;
-  gap: 2em;
+  /* gap: 2em; */
   align-items: center;
   
 }
 
-.registration {
-  margin-top: 6em;
-  display: ;
+
+.description {
+position: absolute;
+left: 0;
+bottom: 0;
+max-height: 100%;
+background: hsl(0, 0%, 100%);
+box-sizing: border-box;
+opacity: 0.9;
+padding: 1rem;
+transition: all 0.4s ease-in-out;
+overflow-y: auto;
+transform: translateY(100%);
 }
-.login {
-  display: ;
-  margin-top: ;
+
+.movie-details:hover .description {
+transform: translateY(0%);
+}
+.links {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  font: inherit;
+  gap: 43px;
+}
+a {
+  text-decoration: none;
+  font: inherit;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: hsl(183, 100%, 15%);
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: hsl(0, 0%, 100%);
+  align-items: center;
+}
+
+input {
+  padding: .4rem 1rem;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  border: 1px solid hsl(183, 100%, 15%);
+  background: rgba(255,255,255, 0.1);
+  color: #f8f8f8;
+  margin-right: 10px;
 }

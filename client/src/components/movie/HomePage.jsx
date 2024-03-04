@@ -8,6 +8,13 @@ function HomePage () {
            <Navbar />
            <div className="container">
                <Card  />
+               <Card  />
+               <Card  />
+               <Card  />
+               <Card  />
+               <Card  />
+               <Card  />
+               <Card  />
            </div>
         </div>
     )
