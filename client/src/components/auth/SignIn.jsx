@@ -10,6 +10,7 @@ function SignIn () {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate();
+    const [error, setError] = useState('')
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -20,7 +21,17 @@ function SignIn () {
         })
         
         .catch((error) => {
-            console.log(error);
+            switch (error.code) {
+                case 'auth/user-not-found':
+                case 'auth/wrong-password':
+                    setError('Invalid email or password.');
+                    break;
+                case 'auth/invalid-email':
+                    setError('Invalid email format.');
+                    break;
+                default:
+                    setError('An error occurred. Please try again later.');
+            }
         })
     }
 
@@ -44,6 +55,7 @@ function SignIn () {
             </form>
 
             <button onClick={handleClick}>Login</button>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
 
         </div>
     );

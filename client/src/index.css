@@ -18,9 +18,62 @@ input {
   padding: .8rem;
   border-radius: 4px;
 }
-
+label{
+  padding: 4px;
+}
+.name{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.email{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.pass{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 8px;
+}
 
 button {
+  background: hsl(172, 67%, 45%);
+  font: inherit;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.3s ease-in-out;
+}
+.container {
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8em;
+  background: hsl(0, 0%, 100%);
+  box-shadow: 0 4px 8px hsla(183, 100%, 15%, 0.5);
+  width: fit-content;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 8px;
+  color: hsl(183, 100%, 15%);
+  font-weight: 700;
+  padding-top: 20px;
+}
+
+.registration {
+  margin-top: 6em;
+  display: ;
+}
+.login {
+  display: ;
+  margin-top: 10em;
+}
+
+
+.search {
   background: hsl(0, 0%, 100%);
   color: hsl(183, 100%, 15%);
   font: inherit;
@@ -37,7 +90,7 @@ button:hover {
   transform: scale(1.1);
 }
 
-.container {
+.container-home {
   width: 90%;
   margin: auto;
   place-items: center;
@@ -135,7 +188,7 @@ a {
   align-items: center;
 }
 
-input {
+ .enter-movie {
   padding: .4rem 1rem;
   font-size: 1.1rem;
   border-radius: 25px;
@@ -143,4 +196,22 @@ input {
   background: rgba(255,255,255, 0.1);
   color: #f8f8f8;
   margin-right: 10px;
+}
+.inp {
+  left: 2em;
+}
+
+.toggle {
+  font-size: 24px;
+  color: hsl(183, 100%, 15%);
+  display: none;
+}
+
+@media only screen and (max-width : 768px) {
+  .toggle {
+    display: block;
+    position: absolute;
+    right: 10px;
+  }
+
 }

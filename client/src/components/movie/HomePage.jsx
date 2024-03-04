@@ -6,7 +6,7 @@ function HomePage () {
     return(
         <div>
            <Navbar />
-           <div className="container">
+           <div className="container-home">
                <Card  />
                <Card  />
                <Card  />

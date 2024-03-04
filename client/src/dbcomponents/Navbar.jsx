@@ -18,7 +18,7 @@ function Navbar () {
                             </ul>
                         </div>
                         <div className="inp">
-                            <input type="text" placeholder="Enter movie" />
+                            <input type="text" placeholder="Enter movie" className='enter-movie' />
                             <button className='search'>
                                 <SearchOutlined  />
                             </button>

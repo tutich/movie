@@ -8,6 +8,7 @@ function SignUp () {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState('');
     const navigate = useNavigate()
 
  
@@ -23,7 +24,19 @@ function SignUp () {
             navigate('/sign')
         })
         .catch((error) => {
-            console.log(error);
+            switch (error.code) {
+                case 'auth/email-already-in-use':
+                    setError('Email is already in use.');
+                    break;
+                case 'auth/invalid-email':
+                    setError('Invalid email format.');
+                    break;
+                case 'auth/weak-password':
+                    setError('Password is too weak.');
+                    break;
+                default:
+                    setError('An error occurred. Please try again later.');
+            }
         })
        
     }
@@ -52,6 +65,7 @@ function SignUp () {
                 </div>
             </form>
             <button type="submit" onClick={handleSubmit}>Sign up</button>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
 
             <p>Already have an account?</p>
             
