@@ -1,27 +1,28 @@
 import React from "react";
 import Thor from '../images/Thor.jpg'
+import axios from 'axios';
 
-function Card () {
+function Card (movie) {
+
+    let img_path="https://image.tmdb.org/t/p/w500";
+
     return (
         <div>
             <div className="movie">
-             <img src={Thor} alt="thor" className="poster" />
+             <img src={img_path+movie.info.poster_path} alt="thor" className="poster" />
              <div className="movie-details">
                  <div className="box">
                      <div className="title">
-                         <h2>Thor: God of Thunder</h2>
+                         <h2>{movie.info.title}</h2>
                      </div>
                      <div className="rating">
                          <h2>Rating</h2>
-                         <p className="rate">7</p>
+                         <p className="rate">{movie.info.vote_average}</p>
                      </div>
                  </div>
                  <div className="description">
                      <h2>Description</h2>
-                     <p>Witness the mighty Thor, the Norse God of Thunder, as he embarks on an epic journey to
-                        protect the Nine Realms from ancient forces of darkness. Joined by his loyal companions and
-                        armed with his enchanted hammer, Mjölnir, Thor must confront his own past and face formidable
-                        enemies to ensure the survival of his people and the universe itself.</p>
+                     <p>{movie.info.overview}</p>
                  </div>
              </div>
             </div>
