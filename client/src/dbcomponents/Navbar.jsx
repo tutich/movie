@@ -3,51 +3,56 @@ import {SearchOutlined} from '@ant-design/icons'
 import {MenuOutlined} from '@ant-design/icons'
 import { useState, useEffect } from 'react';
 import Card from '../dbcomponents/Card';
+import axios from 'axios';
 
-function Navbar () {
+
+
+    let url = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&api_key=c748543571513813034a19f2b64ef48b`
+    let arr=["Popular","Theatre","Kids","Drama","Comedie"];
+
+  function Navbar () {
    const [search, setSearch] = useState('');
-   const [url_set, setUrl] = useState('url');
+   const [urll, setUrll] = useState('url');
    const [movieData,setData]=useState([]);
 
 
-    const api_key = `&api_key=c748543571513813034a19f2b64ef48b`;
-    let base_url = `https://api.themoviedb.org/3/search/movie?`;
-    let url = api_key + "/discover/movie?sort_by=popularity.desc" + base_url;
-    let arr=["Popular","Theatre","Kids","Drama","Comedie"]
+    
 
-    useEffect (() => {
-        fetch(url_set).then(res => res.json()).then((data) => {
-            setData(data.results)
-        })
-    },[])
+   useEffect(()=>{
+    axios.get(url)
+    .then((response) => { setData(response.data.results)})
+    .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  },[urll])
 
     const getData = (getMovie) => {
         if(getMovie == "Popular") {
-            url = base_url+"/discover/movie?sort_by=popularity.desc"+api_key;
+            url = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&api_key=c748543571513813034a19f2b64ef48b`;
         }
         
-        if(getMovie == "Theatre") {
-            url=base_url+"/discover/movie?primary_release_date.gte=2014-09-15&primary_release_date.lte=2014-10-22"+api_key;
-        }
-        if(getMovie == "Kids") {
-            url=base_url+"/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc"+api_key;
-        }
-        if(getMovie == "Drama") {
-            url=base_url+"/discover/movie?with_genres=18&primary_release_year=2014"+api_key;
-        }
-        if(getMovie == "Comedie") {
-            url=base_url+"/discover/movie?with_genres=35&with_cast=23659&sort_by=revenue.desc"+api_key;
-        }
-        setUrl(url);
+        // if(getMovie == "Theatre") {
+        //     url=base_url+"/discover/movie?primary_release_date.gte=2014-09-15&primary_release_date.lte=2014-10-22"+api_key;
+        // }
+        // if(getMovie == "Kids") {
+        //     url=base_url+"/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc"+api_key;
+        // }
+        // if(getMovie == "Drama") {
+        //     url=base_url+"/discover/movie?with_genres=18&primary_release_year=2014"+api_key;
+        // }
+        // if(getMovie == "Comedie") {
+        //     url=base_url+"/discover/movie?with_genres=35&with_cast=23659&sort_by=revenue.desc"+api_key;
+        // }
+        setUrll(url);
     }
-    const searchMovie=(evt)=>{
-        if(evt.key=="Enter")
-        {
-            url=base_url+"/search/movie?api_key=c748543571513813034a19f2b64ef48b&query="+search;
-            setUrl(url);
-            setSearch(" ");
-        }
-    }
+    // const searchMovie=(e)=>{
+    //     if(e.key=="Enter")
+    //     {
+    //         url=base_url+"/search/movie?api_key=c748543571513813034a19f2b64ef48b&query="+search;
+    //         setUrll(url);
+    //         setSearch(" ");
+    //     }
+    // }
 
 
     return (
@@ -76,10 +81,17 @@ function Navbar () {
                     </div>
                 </nav>
                 <div className="container-home">
-               {
+               {/* {
                 (movieData.length==0)?<p className="notfound">Not Found</p>: movieData.map((res,pos)=>{
                     return(
                         <Card info={res} key={pos}/>
+                    )
+                })
+               } */}
+               {
+                movieData.map((movie, index) => {
+                    return(
+                        <Card  key={index} {...movie}/>
                     )
                 })
                }
