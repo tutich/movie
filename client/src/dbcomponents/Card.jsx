@@ -13,7 +13,7 @@ function Card (movie) {
              <div className="movie-details">
                  <div className="box">
                      <div className="title">
-                         <h2>{movie.name}</h2>
+                         <h2>{movie.name} {movie.title}</h2>
                      </div>
                      <div className="rating">
                          <h2>Rating</h2>
@@ -22,7 +22,7 @@ function Card (movie) {
                  </div>
                  <div className="description">
                      <h2>Description</h2>
-                     <p>{movie.overview}</p>
+                     <p>{movie.overview} </p>
                  </div>
              </div>
             </div>
