@@ -3,19 +3,20 @@ import {SearchOutlined} from '@ant-design/icons'
 import {MenuOutlined} from '@ant-design/icons'
 import { useState, useEffect } from 'react';
 import Card from '../dbcomponents/Card';
+import { FaBars } from "react-icons/fa6";
+import { HiX } from "react-icons/hi";
 import axios from 'axios';
 
 
 
-    let url = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&api_key=c748543571513813034a19f2b64ef48b`
+    let url = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c748543571513813034a19f2b64ef48b`
     let arr=["Popular","Now Playing","Top Rated","Upcoming"];
 
   function Navbar () {
    const [search, setSearch] = useState('');
    const [urll, setUrll] = useState('url');
    const [movieData,setData]=useState([]);
-
-
+   const [toggleIcon, setToggleIcon] = useState(false);
     
 
    useEffect(()=>{
@@ -61,7 +62,15 @@ import axios from 'axios';
             setSearch(" ");
         
         }
-    }
+    };
+    const handleToggleIcon = (e) => {
+        e.preventDefault();
+        setToggleIcon(!toggleIcon);
+    };
+
+    const handleLinkClick = () => {
+        setToggleIcon(false);
+      };
 
 
     return (
@@ -70,12 +79,12 @@ import axios from 'axios';
                 <nav>
                     <div className="navbar">
                         <div className="link">
-                            <ul className='links'>
+                            <ul className={`links ${toggleIcon ? "active" : ""}`}>
 
                                 {
                                     arr.map((value, index) => {
                                         return (
-                                            <li key={index}><a href="#" name={value} onClick={() => getData(value)}>{value}</a></li>
+                                            <li key={index} onClick={handleLinkClick}><a href="#" name={value} onClick={() => getData(value)}>{value}</a></li>
                                         )
                                     })
                                 }
@@ -92,8 +101,8 @@ import axios from 'axios';
                                 <SearchOutlined  />
                             </button>
                         </div>
-                        <div className="toggle">
-                            <MenuOutlined />
+                        <div className="toggle" onClick={handleToggleIcon}>
+                        { toggleIcon ? <HiX size={30}/> : <FaBars size={30}/>}
                         </div>
                     </div>
                 </nav>

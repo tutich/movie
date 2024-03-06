@@ -184,7 +184,7 @@ a {
 a::after {
   content: '';
   display: block;
-  height: 2px;
+  height: 3px;
   width: 0;
   background: transparent;
   transition: all 0.4s ease;
@@ -205,10 +205,11 @@ a:hover::after {
  .enter-movie {
   padding: .4rem 1rem;
   font-size: 1.1rem;
+  font-weight: 600;
   border-radius: 25px;
   border: 1px solid hsl(183, 100%, 15%);
   background: rgba(255,255,255, 0.1);
-  color: hsla(183, 100%, 15%, 0.5);
+  color: hsla(183, 100%, 15%);
   margin-right: 10px;
 }
 .inp {
@@ -222,10 +223,41 @@ a:hover::after {
 }
 
 @media only screen and (max-width : 768px) {
+  .links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    opacity: 1;
+    position: absolute;
+    top: 20px;
+    left: -110%;
+    transition: all 0.4s ease;
+
+    &.active {
+      background: hsl(183, 100%, 15%);
+      opacity: 1;
+      left: 0px;
+      top: 40px;
+      z-index: 1000;
+    }
+
+    a {
+      color: #fff;
+    }
+  }
+
   .toggle {
     display: block;
     position: absolute;
     right: 10px;
+  }
+  .inp {
+    margin: 0 auto;
+  }
+  .enter-movie{
+    width: 50%;
   }
 
 }
